@@ -1,17 +1,12 @@
 import React from 'react';
+import Header from '../components/Header';
 
 const DisplayPage = () => {
   return (
     <div>
-      <Header />
+      <Header content="MyReads" className="App-header" />
     </div>
   );
 };
-
-const Header = () => (
-  <div className="App-header">
-    <h1>MyReads</h1>
-  </div>
-);
 
 export default DisplayPage;
