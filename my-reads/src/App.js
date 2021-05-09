@@ -1,11 +1,11 @@
 import React from 'react';
 import './styles/App.css';
-import DisplayPage from './pages/DisplayPage';
+import AppRoutes from './AppRoutes';
 
 function App() {
   return (
     <div className="App">
-      <DisplayPage />
+      <AppRoutes />
     </div>
   );
 }
