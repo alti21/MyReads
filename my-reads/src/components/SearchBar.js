@@ -10,12 +10,11 @@ const SearchBar = ({ type, placeholder }) => {
 };
 
 SearchBar.propTypes = {
-  type: PropTypes.string,
+  type: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
 };
 
 SearchBar.defaultProps = {
-  type: 'text',
   placeholder: 'Search',
 };
 
