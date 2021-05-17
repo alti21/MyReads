@@ -1,25 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { BsArrowLeftShort } from 'react-icons/bs';
 
-const SearchBar = ({ type, placeholder, className, component }) => {
+const SearchBar = ({
+  type,
+  placeholder,
+  inputClassName,
+  iconClassName,
+  icon,
+}) => {
   return (
     <div>
-      {component}
-      <input type={type} placeholder={placeholder} className={className} />
+      <span className={iconClassName}>{icon}</span>
+      <input type={type} placeholder={placeholder} className={inputClassName} />
     </div>
   );
 };
 
 SearchBar.propTypes = {
   type: PropTypes.string.isRequired,
-  className: PropTypes.string,
+  inputClassName: PropTypes.string,
+  iconClassName: PropTypes.string,
   placeholder: PropTypes.string,
-  component: PropTypes.elementType.isRequired,
+  icon: PropTypes.element,
 };
 
 SearchBar.defaultProps = {
   placeholder: 'Search',
-  className: 'search-bar',
+  inputClassName: 'search-bar',
+  iconClassName: 'input-arrow',
+  icon: <BsArrowLeftShort />,
 };
 
 export default SearchBar;
