@@ -8,11 +8,19 @@ const SearchBar = ({
   inputClassName,
   iconClassName,
   icon,
+  handleChange,
+  searchValue,
 }) => {
   return (
     <div>
       <span className={iconClassName}>{icon}</span>
-      <input type={type} placeholder={placeholder} className={inputClassName} />
+      <input
+        type={type}
+        value={searchValue}
+        placeholder={placeholder}
+        className={inputClassName}
+        onChange={handleChange}
+      />
     </div>
   );
 };
@@ -23,6 +31,8 @@ SearchBar.propTypes = {
   iconClassName: PropTypes.string,
   placeholder: PropTypes.string,
   icon: PropTypes.element,
+  handleChange: PropTypes.func.isRequired,
+  searchValue: PropTypes.string.isRequired,
 };
 
 SearchBar.defaultProps = {
