@@ -41,17 +41,18 @@ const SearchPage = () => {
         icon={<BsArrowLeftShort />}
         handleChange={handleChange}
       />
-      {console.log(data)}
-      {data !== []
-        ? data.map((book) => (
-            <Book
-              key={book.id}
-              title={book.title}
-              authors={book.authors}
-              thumbnail={book.imageLinks.thumbnail}
-            />
-          ))
-        : 'ok'}
+      <div className="book-list">
+        {data !== []
+          ? data.map((book) => (
+              <Book
+                key={book.id}
+                title={book.title}
+                authors={book.authors}
+                thumbnail={book.imageLinks.thumbnail}
+              />
+            ))
+          : 'ok'}
+      </div>
     </div>
   );
 };

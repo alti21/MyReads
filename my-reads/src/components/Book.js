@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Book = ({ title, authors, thumbnail }) => (
-  <div>
-    <img src={thumbnail} alt={title} />
-    <div>{title}</div>
-    <div>{authors}</div>
+  <div className="book">
+    <img src={thumbnail} alt={title} className="book-thumbnail" />
+    <div className="book-title">{title}</div>
+    <div className="book-authors">{authors}</div>
   </div>
 );
 
