@@ -3,10 +3,12 @@ import { BsArrowLeftShort } from 'react-icons/bs';
 import { debounce } from 'debounce';
 import SearchBar from '../components/SearchBar';
 import { search } from '../api/BooksAPI';
+import Book from '../components/Book';
 
 const SearchPage = () => {
   const [query, setQuery] = useState('');
   const [data, setData] = useState([]);
+  // const [isLoading, setIsLoading] = useState(true);
 
   const handleChange = (e) => {
     setQuery(e.target.value);
@@ -16,14 +18,18 @@ const SearchPage = () => {
     const bookSearch = debounce(() => {
       if (query.length > 0) {
         search(query).then((res) => {
-          if (res.length > 0) setData(res);
-          else setData([]);
+          if (res.length > 0) {
+            setData(res);
+          } else setData([]);
         });
       } else {
         setData([]); // make sure data is not undefined
       }
     }, 1000);
     bookSearch();
+    // if (data !== []) setIsLoading(false);
+    // setIsLoading(true);
+    console.log(data); // undefined initially since we didnt search anything
   }, [query]);
 
   return (
@@ -36,15 +42,16 @@ const SearchPage = () => {
         handleChange={handleChange}
       />
       {console.log(data)}
-      {typeof data !== 'undefined'
+      {data !== []
         ? data.map((book) => (
-            <>
-              <div>{book.title}</div>
-              <div>{book.authors}</div>
-              <img src={book.imageLinks.thumbnail} alt={book.title} />
-            </>
+            <Book
+              key={book.id}
+              title={book.title}
+              authors={book.authors}
+              thumbnail={book.imageLinks.thumbnail}
+            />
           ))
-        : 'test'}
+        : 'ok'}
     </div>
   );
 };

@@ -1,18 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Book = ({ book }) => (
+const Book = ({ title, authors, thumbnail }) => (
   <div>
-    <div>{book.title}</div>
-    <div>{book.authors}</div>
-    <img src={book.imageLinks.thumbnail} alt={book.title} />
+    <img src={thumbnail} alt={title} />
+    <div>{title}</div>
+    <div>{authors}</div>
   </div>
 );
 
 Book.propTypes = {
-  book: PropTypes.shape.isRequired,
+  thumbnail: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  authors: PropTypes.arrayOf.isRequired,
+  authors: PropTypes.arrayOf(PropTypes.string),
+};
+
+Book.defaultProps = {
+  authors: [],
 };
 
 export default Book;
