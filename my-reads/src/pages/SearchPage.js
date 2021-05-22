@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BsArrowLeftShort } from 'react-icons/bs';
-import { debounce } from 'debounce';
+// import { debounce } from 'debounce';
 import SearchBar from '../components/SearchBar';
 import { search } from '../api/BooksAPI';
 import Book from '../components/Book';
@@ -15,7 +15,7 @@ const SearchPage = () => {
   };
 
   useEffect(() => {
-    const bookSearch = debounce(() => {
+    const bookSearch = setTimeout(() => {
       if (query.length > 0) {
         search(query).then((res) => {
           if (res.length > 0) {
@@ -26,10 +26,11 @@ const SearchPage = () => {
         setData([]); // make sure data is not undefined
       }
     }, 1000);
-    bookSearch();
+    // bookSearch();
+    // console.log(data); // undefined initially since we didnt search anything
+    return () => clearTimeout(bookSearch);
     // if (data !== []) setIsLoading(false);
     // setIsLoading(true);
-    console.log(data); // undefined initially since we didnt search anything
   }, [query]);
 
   return (
