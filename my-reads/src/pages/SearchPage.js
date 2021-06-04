@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { BsArrowLeftShort } from 'react-icons/bs';
-// import { debounce } from 'debounce';
 import SearchBar from '../components/SearchBar';
-import { search } from '../api/BooksAPI';
+import { search, update, getAll } from '../api/BooksAPI';
 import Book from '../components/Book';
 
 const SearchPage = () => {
   const [query, setQuery] = useState('');
   const [data, setData] = useState([]);
-  // const [isLoading, setIsLoading] = useState(true);
 
   const handleChange = (e) => {
     setQuery(e.target.value);
@@ -26,12 +24,22 @@ const SearchPage = () => {
         setData([]); // make sure data is not undefined
       }
     }, 1000);
-    // bookSearch();
-    // console.log(data); // undefined initially since we didnt search anything
     return () => clearTimeout(bookSearch);
-    // if (data !== []) setIsLoading(false);
-    // setIsLoading(true);
   }, [query]);
+
+  const [shelfType, setShelfType] = useState('None'); // useState is async so state is updated later
+  const [currentBook, setCurrentBook] = useState({});
+
+  const doSomethingWithBookAndShelf = (book, shelf) => {
+    setShelfType(shelf);
+    setCurrentBook(book);
+  };
+
+  useEffect(() => {
+    update(currentBook, shelfType).then((res) => console.log(res));
+    getAll().then((res) => console.log(res));
+    console.log(`${shelfType} ${currentBook.id}`);
+  }, [shelfType]);
 
   return (
     <div>
@@ -46,10 +54,10 @@ const SearchPage = () => {
         {data !== []
           ? data.map((book) => (
               <Book
+                book={book}
                 key={book.id}
-                title={book.title}
-                authors={book.authors}
-                thumbnail={book.imageLinks.thumbnail}
+                doSomethingWithBookAndShelf={doSomethingWithBookAndShelf}
+                shelf={shelfType}
               />
             ))
           : 'ok'}
