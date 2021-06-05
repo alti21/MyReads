@@ -19,6 +19,7 @@ const Book = ({ book, doSomethingWithBookAndShelf, shelf }) => {
           doSomethingWithBookAndShelf(book, choice);
         }}
         shelf={shelf}
+        // node={node}
       />
       <div className="book-title">{book.title}</div>
       <div className="book-authors">{book.authors}</div>
@@ -28,7 +29,6 @@ const Book = ({ book, doSomethingWithBookAndShelf, shelf }) => {
 // Move to..., currently reading, want to read, read, none
 
 Book.propTypes = {
-  // handleShelfTypeClick: PropTypes.func.isRequired,
   shelf: PropTypes.string.isRequired,
   doSomethingWithBookAndShelf: PropTypes.func.isRequired,
   book: PropTypes.shape({
@@ -38,9 +38,6 @@ Book.propTypes = {
     title: PropTypes.string.isRequired,
     authors: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
-  //   thumbnail: PropTypes.string.isRequired,
-  //   title: PropTypes.string.isRequired,
-  //   authors: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default Book;

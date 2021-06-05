@@ -1,22 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { BsFillCaretDownFill } from 'react-icons/bs';
 
 const ButtonDropDown = ({ choices, label, onSelectChoice, shelf }) => {
   const [active, setActive] = useState(false);
 
-  const toggleClass = () => {
-    setActive(!active);
+  const node = useRef();
+
+  const handleClick = (e) => {
+    if (node.current && node.current.contains(e.target)) {
+      // inside click
+      setActive(true);
+      return;
+    } // outside click
+    setActive(false);
   };
 
+  useEffect(() => {
+    // add when mounted
+    document.addEventListener('mousedown', handleClick); // return function to be called when unmounted
+    return () => {
+      document.removeEventListener('mousedown', handleClick);
+    };
+  }, []);
+
   return (
-    <div className="dropdown">
-      <button
-        type="button"
-        className="dropbtn"
-        onFocus={toggleClass}
-        onBlur={toggleClass}
-      >
+    <div className="dropdown" ref={node}>
+      <button type="button" className="dropbtn">
         <BsFillCaretDownFill />
       </button>
       <div
@@ -25,19 +35,21 @@ const ButtonDropDown = ({ choices, label, onSelectChoice, shelf }) => {
       >
         <div className="dropdown-label">{label}</div>
         {choices.map((choice, index) => (
-          <button
-            // eslint-disable-next-line react/no-array-index-key
-            key={index}
-            className="dropdown-choice"
-            onClick={() => {
-              // we create an specific callback for each item
-              onSelectChoice(choice); // callback in parent component
-            }}
-            type="button"
-            value={choice}
-          >
-            {shelf === choice ? 'o ' : ''} {choice}
-          </button>
+          // eslint-disable-next-line react/no-array-index-key
+          <div className="choice-wrapper" key={index}>
+            <span className="check-mark">{shelf === choice ? 'o ' : ''}</span>
+            <button
+              className="dropdown-choice"
+              onClick={() => {
+                // we create an specific callback for each item
+                onSelectChoice(choice); // callback in parent component
+              }}
+              type="button"
+              value={choice}
+            >
+              {choice}
+            </button>
+          </div>
         ))}
       </div>
     </div>

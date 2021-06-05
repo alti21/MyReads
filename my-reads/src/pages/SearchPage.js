@@ -8,6 +8,10 @@ const SearchPage = () => {
   const [query, setQuery] = useState('');
   const [data, setData] = useState([]);
 
+  const toggleClass = (active) => {
+    return active;
+  };
+
   const handleChange = (e) => {
     setQuery(e.target.value);
   };
@@ -41,6 +45,27 @@ const SearchPage = () => {
     console.log(`${shelfType} ${currentBook.id}`);
   }, [shelfType]);
 
+  // const wrapperRef = useRef(null);
+  // useOutsideAlerter(wrapperRef);
+  // const node = useRef();
+
+  // const handleClick = (e) => {
+  //   if (node.current && node.current.contains(e.target)) {
+  //     // inside click
+  //     console.log('inside');
+  //   } // outside click
+  //   else console.log('outside');
+  //   // ... do whatever on click outside here ...
+  // };
+
+  // useEffect(() => {
+  //   // add when mounted
+  //   document.addEventListener('mousedown', handleClick); // return function to be called when unmounted
+  //   return () => {
+  //     document.removeEventListener('mousedown', handleClick);
+  //   };
+  // }, []);
+
   return (
     <div>
       <SearchBar
@@ -58,6 +83,8 @@ const SearchPage = () => {
                 key={book.id}
                 doSomethingWithBookAndShelf={doSomethingWithBookAndShelf}
                 shelf={shelfType}
+                toggleDropDown={toggleClass}
+                // node={node}
               />
             ))
           : 'ok'}
