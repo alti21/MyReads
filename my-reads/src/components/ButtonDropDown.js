@@ -37,7 +37,7 @@ const ButtonDropDown = ({ choices, label, onSelectChoice, shelf }) => {
         {choices.map((choice, index) => (
           // eslint-disable-next-line react/no-array-index-key
           <div className="choice-wrapper" key={index}>
-            <span className="check-mark">{shelf === choice ? 'o ' : ''}</span>
+            <span className="check-mark">{shelf === choice ? '✔' : ''}</span>
             <button
               className="dropdown-choice"
               onClick={() => {
@@ -68,3 +68,5 @@ ButtonDropDown.defaultProps = {
 };
 
 export default ButtonDropDown;
+
+// for checkmark next to selected shelf, pull that from API data i.e. from getAll?55, maybe create an object mapping them?

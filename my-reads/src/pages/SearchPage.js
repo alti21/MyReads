@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BsArrowLeftShort } from 'react-icons/bs';
 import SearchBar from '../components/SearchBar';
-import { search, update, getAll } from '../api/BooksAPI';
+import { search } from '../api/BooksAPI';
 import Book from '../components/Book';
 
 const SearchPage = () => {
@@ -31,19 +31,19 @@ const SearchPage = () => {
     return () => clearTimeout(bookSearch);
   }, [query]);
 
-  const [shelfType, setShelfType] = useState('None'); // useState is async so state is updated later
-  const [currentBook, setCurrentBook] = useState({});
+  // const [shelfType, setShelfType] = useState('None'); // useState is async so state is updated later
+  // const [currentBook, setCurrentBook] = useState({});
 
-  const doSomethingWithBookAndShelf = (book, shelf) => {
-    setShelfType(shelf);
-    setCurrentBook(book);
-  };
+  // const doSomethingWithBookAndShelf = (book, shelf) => {
+  //   setShelfType(shelf);
+  //   setCurrentBook(book);
+  // };
 
-  useEffect(() => {
-    update(currentBook, shelfType).then((res) => console.log(res));
-    getAll().then((res) => console.log(res));
-    console.log(`${shelfType} ${currentBook.id}`);
-  }, [shelfType]);
+  // useEffect(() => {
+  //   update(currentBook, shelfType).then((res) => console.log(res));
+  //   getAll().then((res) => console.log(res));
+  //   console.log(`${shelfType} ${currentBook.id}`);
+  // }, [shelfType]);
 
   // const wrapperRef = useRef(null);
   // useOutsideAlerter(wrapperRef);
@@ -81,8 +81,8 @@ const SearchPage = () => {
               <Book
                 book={book}
                 key={book.id}
-                doSomethingWithBookAndShelf={doSomethingWithBookAndShelf}
-                shelf={shelfType}
+                // doSomethingWithBookAndShelf={doSomethingWithBookAndShelf}
+                // shelf={shelfType}
                 toggleDropDown={toggleClass}
                 // node={node}
               />
