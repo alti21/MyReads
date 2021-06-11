@@ -2,7 +2,13 @@ import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { BsFillCaretDownFill } from 'react-icons/bs';
 
-const ButtonDropDown = ({ choices, label, onSelectChoice, shelf }) => {
+const ButtonDropDown = ({
+  choices,
+  label,
+  onSelectChoice,
+  // shelf,
+  currentShelf,
+}) => {
   const [active, setActive] = useState(false);
 
   const node = useRef();
@@ -23,7 +29,7 @@ const ButtonDropDown = ({ choices, label, onSelectChoice, shelf }) => {
       document.removeEventListener('mousedown', handleClick);
     };
   }, []);
-
+  // for initial checkmark (to make checkmark appear on initial render), initialize shelfType to book's currentshelf using api call getAll?
   return (
     <div className="dropdown" ref={node}>
       <button type="button" className="dropbtn">
@@ -37,7 +43,9 @@ const ButtonDropDown = ({ choices, label, onSelectChoice, shelf }) => {
         {choices.map((choice, index) => (
           // eslint-disable-next-line react/no-array-index-key
           <div className="choice-wrapper" key={index}>
-            <span className="check-mark">{shelf === choice ? '✔' : ''}</span>
+            <span className="check-mark">
+              {currentShelf === choice ? '✔' : ''}
+            </span>
             <button
               className="dropdown-choice"
               onClick={() => {
@@ -60,7 +68,7 @@ ButtonDropDown.propTypes = {
   choices: PropTypes.arrayOf(PropTypes.string).isRequired,
   label: PropTypes.string,
   onSelectChoice: PropTypes.func.isRequired,
-  shelf: PropTypes.string.isRequired,
+  currentShelf: PropTypes.string.isRequired,
 };
 
 ButtonDropDown.defaultProps = {

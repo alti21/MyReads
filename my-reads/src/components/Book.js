@@ -3,11 +3,19 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import ButtonDropDown from './ButtonDropDown';
-import { update, getAll } from '../api/BooksAPI';
+import { update, get } from '../api/BooksAPI';
 
 const Book = ({ book }) => {
   const [shelfType, setShelfType] = useState('None'); // useState is async so state is updated later
   const [currentBook, setCurrentBook] = useState({});
+  const [curShelf, setCurShelf] = useState('None');
+
+  // useEffect(() => {
+  //   get(book.id).then((res) => {
+  //     console.log(`${res.shelf} ${res.id} ${res.title}`);
+  //     setCurShelf(res.shelf);
+  //   });
+  // }, []); // runs when Book first renders
 
   const doSomethingWithBookAndShelf = (currbook, currShelf) => {
     setShelfType(currShelf);
@@ -15,9 +23,20 @@ const Book = ({ book }) => {
   };
 
   useEffect(() => {
-    update(currentBook, shelfType).then((res) => console.log(res));
-    getAll().then((res) => console.log(res));
-    console.log(`${shelfType} and ${currentBook.id}`);
+    update(currentBook, shelfType).then(() => {
+      // console.log(res);
+      get(book.id).then((res2) => {
+        // console.log(`${res2.shelf} ${res2.id} ${res2.title}`);
+        setCurShelf(res2.shelf);
+      });
+    });
+    // getAll().then((res) => console.log(res));
+    // get(currentBook.id).then((res) => console.log(res.shelf)); // use this to keep checkmark persistent
+    // get(book.id).then((res) => {
+    //   console.log(`${res.shelf} ${res.id} ${res.title}`);
+    //   setCurShelf(res.shelf);
+    // });
+    // console.log(`${shelfType} and ${currentBook.id}`);
   }, [shelfType]);
 
   return (
@@ -34,6 +53,7 @@ const Book = ({ book }) => {
           doSomethingWithBookAndShelf(book, choice);
         }}
         shelf={shelfType}
+        currentShelf={curShelf}
         // node={node}
       />
       <div className="book-title">{book.title}</div>
@@ -52,6 +72,8 @@ Book.propTypes = {
     }),
     title: PropTypes.string.isRequired,
     authors: PropTypes.arrayOf(PropTypes.string),
+    shelf: PropTypes.string,
+    id: PropTypes.string,
   }).isRequired,
 };
 
