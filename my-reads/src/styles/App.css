@@ -135,3 +135,16 @@ box-shadow: 2px 2px 3px black;
 
 /* bottom: 45px;
 left: 120px; */
+
+.shelf-header {
+  text-align: left;
+  margin-left: 25px;
+  margin: 1% auto;
+  margin-top: 3%;
+  width: 95%;
+}
+
+hr {
+  width: 95%;
+  opacity: 25%;
+}
