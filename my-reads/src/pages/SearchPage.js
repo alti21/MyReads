@@ -9,9 +9,9 @@ const SearchPage = () => {
   const [query, setQuery] = useState('');
   const [data, setData] = useState([]);
 
-  const toggleClass = (active) => {
-    return active;
-  };
+  // const toggleClass = (active) => {
+  //   return active;
+  // };
 
   const handleChange = (e) => {
     setQuery(e.target.value);
@@ -22,6 +22,7 @@ const SearchPage = () => {
       if (query.length > 0) {
         search(query).then((res) => {
           if (res.length > 0) {
+            console.log(res);
             setData(res);
           } else setData([]);
         });
@@ -76,7 +77,7 @@ const SearchPage = () => {
         icon={<BsArrowLeftShort />}
         handleChange={handleChange}
       />
-      <BookList data={data} toggleClass={toggleClass} />
+      <BookList data={data} />
       {/*
       <div className="book-list">
         {data !== []
