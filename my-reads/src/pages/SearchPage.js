@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { BsArrowLeftShort } from 'react-icons/bs';
 import SearchBar from '../components/SearchBar';
 import { search } from '../api/BooksAPI';
-import Book from '../components/Book';
+// import Book from '../components/Book';
+import BookList from '../components/BookList';
 
 const SearchPage = () => {
   const [query, setQuery] = useState('');
@@ -75,6 +76,8 @@ const SearchPage = () => {
         icon={<BsArrowLeftShort />}
         handleChange={handleChange}
       />
+      <BookList data={data} toggleClass={toggleClass} />
+      {/*
       <div className="book-list">
         {data !== []
           ? data.map((book) => (
@@ -89,6 +92,7 @@ const SearchPage = () => {
             ))
           : 'ok'}
       </div>
+          */}
     </div>
   );
 };

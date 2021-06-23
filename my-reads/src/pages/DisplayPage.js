@@ -6,7 +6,7 @@ const DisplayPage = () => {
   return (
     <div>
       <Header content="MyReads" className="App-header" headingLevel="h1" />
-      <Shelf />
+      <Shelf shelfType="currentlyReading" />
     </div>
   );
 };

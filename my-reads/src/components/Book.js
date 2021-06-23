@@ -24,7 +24,6 @@ const Book = ({ book }) => {
 
   useEffect(() => {
     update(currentBook, shelfType).then(() => {
-      // console.log(res);
       get(book.id).then((res2) => {
         // console.log(`${res2.shelf} ${res2.id} ${res2.title}`);
         setCurShelf(res2.shelf);
