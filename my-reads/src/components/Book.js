@@ -56,7 +56,12 @@ const Book = ({ book }) => {
         // node={node}
       />
       <div className="book-title">{book.title}</div>
-      <div className="book-authors">{book.authors}</div>
+      <div className="book-authors">
+        {book.authors.map((author, index) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <div key={index}>{author}</div>
+        ))}
+      </div>
     </div>
   );
 };

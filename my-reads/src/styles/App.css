@@ -96,12 +96,12 @@
   margin: 2em;
   display: grid;
   align-items: center;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fit, 200px);
   text-align: left;
   column-gap: 2em;
   row-gap: 1.5em;
   align-items: start;
-  justify-items: start;
+  justify-content: center;
 }
 
 .book-thumbnail {

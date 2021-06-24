@@ -41,4 +41,6 @@ Shelf.propTypes = {
 
 export default Shelf;
 
-// rerender shelf component each time status of book is changed by user
+// rerender shelf component each time status of book is changed by user.
+// if child component's (Book component's) state changes,
+// parent component (Shelf component) will re-render
