@@ -22,7 +22,6 @@ const SearchPage = () => {
       if (query.length > 0) {
         search(query).then((res) => {
           if (res.length > 0) {
-            console.log(res);
             setData(res);
           } else setData([]);
         });

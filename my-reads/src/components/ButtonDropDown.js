@@ -32,7 +32,7 @@ const ButtonDropDown = ({
   // for initial checkmark (to make checkmark appear on initial render), initialize shelfType to book's currentshelf using api call getAll?
   return (
     <div className="dropdown" ref={node}>
-      <button type="button" className="dropbtn">
+      <button type="button" className="btn">
         <BsFillCaretDownFill />
       </button>
       <div
