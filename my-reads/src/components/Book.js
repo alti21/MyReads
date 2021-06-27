@@ -21,11 +21,15 @@ const Book = ({ book }) => {
   };
 
   useEffect(() => {
+    let unmounted = false;
     update(currentBook, shelfType).then(() => {
       get(book.id).then((res2) => {
-        setCurShelf(res2.shelf);
+        if (!unmounted) setCurShelf(res2.shelf);
       });
     });
+    return () => {
+      unmounted = true;
+    };
   }, [shelfType]);
 
   return (

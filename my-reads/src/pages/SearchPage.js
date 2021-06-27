@@ -13,11 +13,11 @@ const SearchPage = () => {
   };
 
   useEffect(() => {
+    let unmounted = false;
     const bookSearch = setTimeout(() => {
-      if (query.length > 0) {
+      if (query.length > 0 && !unmounted) {
         search(query).then((res) => {
-          if (res.length > 0) {
-            console.log(res);
+          if (res.length > 0 && !unmounted) {
             setData(res);
           } else setData([]);
         });
@@ -25,7 +25,10 @@ const SearchPage = () => {
         setData([]); // make sure data is not undefined
       }
     }, 1000);
-    return () => clearTimeout(bookSearch);
+    return () => {
+      clearTimeout(bookSearch);
+      unmounted = true;
+    };
   }, [query]);
 
   return (
