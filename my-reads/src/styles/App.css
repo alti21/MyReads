@@ -131,6 +131,7 @@
   border-radius: 50%; 
   border: none;
   box-shadow: 2px 2px 3px black;
+  cursor: pointer;
 }
 
 .shelf-header {
