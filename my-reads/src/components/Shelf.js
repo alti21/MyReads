@@ -15,11 +15,9 @@ const Shelf = ({ shelfName }) => {
   useEffect(() => {
     getAll().then((res) => {
       if (res.length > 0) {
-        // console.log(res);
         setData(res);
       } else setData([]);
     });
-    // getAll().then((res) => console.log(res)); // if res.shelf === currentlyReading
   });
 
   return (
@@ -40,7 +38,3 @@ Shelf.propTypes = {
 };
 
 export default Shelf;
-
-// rerender shelf component each time status of book is changed by user.
-// if child component's (Book component's) state changes,
-// parent component (Shelf component) will re-render

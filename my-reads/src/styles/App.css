@@ -13,6 +13,26 @@
   color: #fff;
 }
 
+/*****SEARCH BAR CSS*****/
+
+.search-bar {
+  width: 100vw;
+  height: 5vh;
+  box-shadow: 0px 2px 2px rgb(105, 105, 105);
+  font-size: 1.2em;
+  border-left: none;
+  padding-left: 50px;
+}
+
+.input-arrow {
+  position: absolute;
+  font-size: 40px;
+  padding-left: 5px;
+  padding-top: 3px;
+}
+
+/*****DROP DOWN MENU CSS*****/
+
 .dropdown-content a {
   color: black;
   padding: 12px 16px;
@@ -76,21 +96,7 @@
   color: #fff;
 }
 
-.search-bar {
-  width: 100vw;
-  height: 5vh;
-  box-shadow: 0px 2px 2px rgb(105, 105, 105);
-  font-size: 1.2em;
-  border-left: none;
-  padding-left: 50px;
-}
-
-.input-arrow {
-  position: absolute;
-  font-size: 40px;
-  padding-left: 5px;
-  padding-top: 3px;
-}
+/*****BOOK LIST AND BOOK CSS*****/
 
 .book-list {
   margin: 2em;
@@ -123,6 +129,16 @@
   position: relative;
 }
 
+/****ADDITIONAL CSS*****/
+
+.addbtn {
+  font-size: 2em;
+  position: fixed;
+  z-index: 999;
+  top: 85%;
+  right: 5%;
+}
+
 .btn {
   background: #0ed30e;
   color: #fff;
@@ -147,10 +163,3 @@ hr {
   opacity: 25%;
 }
 
-.addbtn {
-  font-size: 2em;
-  position: fixed;
-  z-index: 999;
-  top: 85%;
-  right: 5%;
-}

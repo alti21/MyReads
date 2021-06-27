@@ -6,7 +6,6 @@ const ButtonDropDown = ({
   choices,
   label,
   onSelectChoice,
-  // shelf,
   currentShelf,
   choiceName,
 }) => {
@@ -16,21 +15,19 @@ const ButtonDropDown = ({
 
   const handleClick = (e) => {
     if (node.current && node.current.contains(e.target)) {
-      // inside click
       setActive(true);
       return;
-    } // outside click
+    }
     setActive(false);
   };
 
   useEffect(() => {
-    // add when mounted
     document.addEventListener('mousedown', handleClick); // return function to be called when unmounted
     return () => {
       document.removeEventListener('mousedown', handleClick);
     };
   }, []);
-  // for initial checkmark (to make checkmark appear on initial render), initialize shelfType to book's currentshelf using api call getAll?
+
   return (
     <div className="dropdown" ref={node}>
       <button type="button" className="btn">
@@ -88,5 +85,3 @@ ButtonDropDown.defaultProps = {
 };
 
 export default ButtonDropDown;
-
-// for checkmark next to selected shelf, pull that from API data i.e. from getAll?55, maybe create an object mapping them?
