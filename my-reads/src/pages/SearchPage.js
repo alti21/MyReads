@@ -19,9 +19,9 @@ const SearchPage = () => {
         search(query).then((res) => {
           if (res.length > 0 && !unmounted) {
             setData(res);
-          } else setData([]);
+          } else if (!unmounted) setData([]);
         });
-      } else {
+      } else if (!unmounted) {
         setData([]); // make sure data is not undefined
       }
     }, 1000);

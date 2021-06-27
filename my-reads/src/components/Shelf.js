@@ -17,7 +17,7 @@ const Shelf = ({ shelfName }) => {
     getAll().then((res) => {
       if (!unmounted && res.length > 0) {
         setData(res);
-      } else setData([]);
+      } else if (!unmounted) setData([]);
     });
     return () => {
       unmounted = true;
