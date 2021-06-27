@@ -5,6 +5,21 @@ import Shelf from '../components/Shelf';
 import AddButton from '../components/AddButton';
 
 const DisplayPage = () => {
+  // const SHELVES = [
+  //   {
+  //     title: 'Currently Reading',
+  //     id: 'currentlyReading',
+  //   },
+  //   {
+  //     title: 'Want To Read',
+  //     id: 'wantToRead',
+  //   },
+  //   {
+  //     title: 'Read',
+  //     id: 'read',
+  //   },
+  // ];
+
   return (
     <div>
       <Header content="MyReads" className="App-header" headingLevel="h1" />

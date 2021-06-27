@@ -17,6 +17,7 @@ const SearchPage = () => {
       if (query.length > 0) {
         search(query).then((res) => {
           if (res.length > 0) {
+            console.log(res);
             setData(res);
           } else setData([]);
         });
@@ -36,7 +37,7 @@ const SearchPage = () => {
         icon={<BsArrowLeftShort />}
         handleChange={handleChange}
       />
-      <BookList data={data} />
+      <BookList data={data} shelfType="none" />
     </div>
   );
 };

@@ -13,11 +13,15 @@ const Shelf = ({ shelfName }) => {
   else if (shelfName === 'Read') shelfType = 'read';
 
   useEffect(() => {
+    let unmounted = false;
     getAll().then((res) => {
-      if (res.length > 0) {
+      if (!unmounted && res.length > 0) {
         setData(res);
       } else setData([]);
     });
+    return () => {
+      unmounted = true;
+    };
   });
 
   return (
@@ -28,7 +32,7 @@ const Shelf = ({ shelfName }) => {
         headingLevel="h2"
       />
       <hr />
-      <BookList data={data} shelf={shelfType} />
+      <BookList data={data} shelfType={shelfType} />
     </>
   );
 };

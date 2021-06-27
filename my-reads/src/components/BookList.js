@@ -2,12 +2,35 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Book from './Book';
 
-const BookList = ({ data, shelf }) => {
+const BookList = ({ data, shelfType }) => {
   const toggleClass = (active) => {
     return active;
   };
+  if (shelfType === 'none') {
+    return (
+      <div className="book-list">
+        {data !== []
+          ? data.map((book) => (
+              <Book book={book} key={book.id} toggleDropDown={toggleClass} />
+            ))
+          : null}
+      </div>
+    );
+  }
+  return (
+    <div className="book-list">
+      {data !== []
+        ? data.map((book) =>
+            book.shelf === shelfType ? (
+              <Book book={book} key={book.id} toggleDropDown={toggleClass} />
+            ) : null
+          )
+        : null}
+    </div>
+  );
 
-  if (shelf === 'currentlyReading') {
+  /*
+  if (shelfType === 'currentlyReading') {
     return (
       <div className="book-list">
         {data !== []
@@ -22,7 +45,7 @@ const BookList = ({ data, shelf }) => {
       </div>
     );
   }
-  if (shelf === 'wantToRead') {
+  if (shelfType === 'wantToRead') {
     return (
       <div className="book-list">
         {data !== []
@@ -37,7 +60,7 @@ const BookList = ({ data, shelf }) => {
       </div>
     );
   }
-  if (shelf === 'read') {
+  if (shelfType === 'read') {
     return (
       <div className="book-list">
         {data !== []
@@ -61,10 +84,11 @@ const BookList = ({ data, shelf }) => {
         : ''}
     </div>
   );
+  */
 };
 
 BookList.propTypes = {
-  shelf: PropTypes.string,
+  shelfType: PropTypes.string,
   data: PropTypes.arrayOf(
     PropTypes.shape({
       map: PropTypes.func,
@@ -73,7 +97,7 @@ BookList.propTypes = {
 };
 
 BookList.defaultProps = {
-  shelf: 'none',
+  shelfType: 'none',
 };
 
 export default BookList;
