@@ -8,6 +8,7 @@ const ButtonDropDown = ({
   onSelectChoice,
   // shelf,
   currentShelf,
+  choiceName,
 }) => {
   const [active, setActive] = useState(false);
 
@@ -55,7 +56,7 @@ const ButtonDropDown = ({
               type="button"
               value={choice}
             >
-              {choice}
+              {choiceName[choice]}
             </button>
           </div>
         ))}
@@ -69,10 +70,21 @@ ButtonDropDown.propTypes = {
   label: PropTypes.string,
   onSelectChoice: PropTypes.func.isRequired,
   currentShelf: PropTypes.string.isRequired,
+  choiceName: PropTypes.shape({
+    currentlyReading: PropTypes.string,
+    wantToRead: PropTypes.string,
+    read: PropTypes.string,
+  }),
 };
 
 ButtonDropDown.defaultProps = {
   label: 'Move to...',
+  choiceName: {
+    currentlyReading: 'Currently Reading',
+    wantToRead: 'Want To Read',
+    read: 'Read',
+    none: 'None',
+  },
 };
 
 export default ButtonDropDown;

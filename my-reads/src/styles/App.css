@@ -35,13 +35,14 @@
 .dropdown-content {
   position: absolute;
   background-color: #f1f1f1;
-  min-width: 150px;
+  min-width: 170px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 999;
   top: 0;
 }
 
 .dropdown-label {
+  margin-left: 20px;
   padding-left: 5px;
   opacity: 50%;
 }
@@ -58,7 +59,7 @@
   font-size: 16px;
   padding-left: 5px;
   margin-left: 20px;
-  width: 130px;
+  width: 150px;
 }
 
 .check-mark {
@@ -66,12 +67,11 @@
   left: 6px;
 }
 
-.choice-wrapper:hover {
-  background: rgb(55, 92, 255);
-  color: #fff;
+.choice-wrapper {
+  padding: 1px 0;
 }
 
-.dropdown-choice:hover {
+.choice-wrapper:hover, .choice-wrapper:hover > * {
   background: rgb(55, 92, 255);
   color: #fff;
 }
@@ -127,14 +127,11 @@
   background: #0ed30e;
   color: #fff;
   width: 60px;
-height: 60px;
-border-radius: 50%; 
-border: none;
-box-shadow: 2px 2px 3px black;
+  height: 60px;
+  border-radius: 50%; 
+  border: none;
+  box-shadow: 2px 2px 3px black;
 }
-
-/* bottom: 45px;
-left: 120px; */
 
 .shelf-header {
   text-align: left;

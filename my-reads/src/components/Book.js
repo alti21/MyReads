@@ -6,6 +6,13 @@ import ButtonDropDown from './ButtonDropDown';
 import { update, get } from '../api/BooksAPI';
 
 const Book = ({ book }) => {
+  const choiceName = {
+    currentlyReading: 'Currently Reading',
+    wantToRead: 'Want To Read',
+    read: 'Read',
+    none: 'None',
+  };
+
   const [shelfType, setShelfType] = useState('None'); // useState is async so state is updated later
   const [currentBook, setCurrentBook] = useState({});
   const [curShelf, setCurShelf] = useState('None');
@@ -54,6 +61,7 @@ const Book = ({ book }) => {
         shelf={shelfType}
         currentShelf={curShelf}
         // node={node}
+        choiceName={choiceName}
       />
       <div className="book-title">{book.title}</div>
       <div className="book-authors">
