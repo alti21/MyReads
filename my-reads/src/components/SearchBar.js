@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { BsArrowLeftShort } from 'react-icons/bs';
+import { NavLink } from 'react-router-dom';
 
 const SearchBar = ({
   type,
@@ -13,7 +14,9 @@ const SearchBar = ({
 }) => {
   return (
     <div>
-      <span className={iconClassName}>{icon}</span>
+      <NavLink to="/MyReads">
+        <span className={iconClassName}>{icon}</span>
+      </NavLink>
       <input
         type={type}
         value={searchValue}
