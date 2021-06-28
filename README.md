@@ -6,7 +6,7 @@ MyReads is a book lending app in which users can choose which books to read and 
 Clone and then Install [npm](https://www.npmjs.com/) using:
 
 1. #### `git clone https://github.com/alti21/StoryPick`
-2. #### `cd story-pick`
+2. #### `cd my-reads`
 3. #### `npm install`
 
 ## Running the Application
