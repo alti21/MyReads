@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ButtonDropDown from './ButtonDropDown';
 import { update, get } from '../api/BooksAPI';
 
-const Book = ({ book }) => {
+const Book = ({ book, setShelf }) => {
   const choiceName = {
     currentlyReading: 'Currently Reading',
     wantToRead: 'Want To Read',
@@ -43,7 +43,9 @@ const Book = ({ book }) => {
         choices={['currentlyReading', 'wantToRead', 'read', 'none']}
         onSelectChoice={(choice) => {
           // book is from the component's props
+          // this function will be passed down to child
           doSomethingWithBookAndShelf(book, choice);
+          setShelf(choice);
         }}
         shelf={shelfType}
         currentShelf={curShelf}
@@ -70,6 +72,7 @@ Book.propTypes = {
     shelf: PropTypes.string,
     id: PropTypes.string,
   }).isRequired,
+  setShelf: PropTypes.func.isRequired,
 };
 
 export default Book;
