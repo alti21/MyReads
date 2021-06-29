@@ -15,7 +15,7 @@ const Book = ({ book, reRender }) => {
   const [currentBook, setCurrentBook] = useState({});
   const [curShelf, setCurShelf] = useState('None');
 
-  const doSomethingWithBookAndShelf = (currbook, currShelf) => {
+  const updateCurrentBookAndShelf = (currbook, currShelf) => {
     setShelfType(currShelf);
     setCurrentBook(currbook);
   };
@@ -47,7 +47,7 @@ const Book = ({ book, reRender }) => {
         onSelectChoice={(choice) => {
           // book is from the component's props
           // this function will be passed down to child
-          doSomethingWithBookAndShelf(book, choice);
+          updateCurrentBookAndShelf(book, choice);
         }}
         shelf={shelfType}
         currentShelf={curShelf}
