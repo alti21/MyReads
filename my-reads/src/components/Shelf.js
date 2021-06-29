@@ -4,7 +4,7 @@ import Header from './Header';
 // import { getAll } from '../api/BooksAPI';
 import BookList from './BookList';
 
-const Shelf = ({ data, shelfName, setShelfType }) => {
+const Shelf = ({ data, shelfName, reRender }) => {
   // const [data, setData] = useState([]);
 
   let shelfType = '';
@@ -33,11 +33,7 @@ const Shelf = ({ data, shelfName, setShelfType }) => {
         headingLevel="h2"
       />
       <hr />
-      <BookList
-        data={data}
-        shelfType={shelfType}
-        setShelfType={(shelf) => setShelfType(shelf)}
-      />
+      <BookList data={data} shelfType={shelfType} reRender={() => reRender()} />
     </>
   );
 };
@@ -45,7 +41,7 @@ const Shelf = ({ data, shelfName, setShelfType }) => {
 Shelf.propTypes = {
   shelfName: PropTypes.string.isRequired,
   data: PropTypes.arrayOf().isRequired,
-  setShelfType: PropTypes.func.isRequired,
+  reRender: PropTypes.func.isRequired,
 };
 
 export default Shelf;
