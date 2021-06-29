@@ -6,20 +6,20 @@ import AddButton from '../components/AddButton';
 import { getAll } from '../api/BooksAPI';
 
 const DisplayPage = () => {
-  // const SHELVES = [
-  //   {
-  //     title: 'Currently Reading',
-  //     id: 'currentlyReading',
-  //   },
-  //   {
-  //     title: 'Want To Read',
-  //     id: 'wantToRead',
-  //   },
-  //   {
-  //     title: 'Read',
-  //     id: 'read',
-  //   },
-  // ];
+  const SHELVES = [
+    {
+      title: 'Currently Reading',
+      id: 'currentlyReading',
+    },
+    {
+      title: 'Want To Read',
+      id: 'wantToRead',
+    },
+    {
+      title: 'Read',
+      id: 'read',
+    },
+  ];
   const [data, setData] = useState([]);
   const [reload, setReload] = useState(false);
 
@@ -42,13 +42,9 @@ const DisplayPage = () => {
   return (
     <div>
       <Header content="MyReads" className="App-header" headingLevel="h1" />
-      <Shelf
-        data={data}
-        shelfName="Currently Reading"
-        reRender={() => reRender()}
-      />
-      <Shelf data={data} shelfName="Want To Read" reRender={() => reRender()} />
-      <Shelf data={data} shelfName="Read" reRender={() => reRender()} />
+      {SHELVES.map((shelf) => (
+        <Shelf data={data} shelf={shelf} reRender={() => reRender()} />
+      ))}
 
       <NavLink to="/MyReads/search">
         <AddButton />
@@ -58,3 +54,13 @@ const DisplayPage = () => {
 };
 
 export default DisplayPage;
+
+/*
+     <Shelf
+        data={data}
+        shelfName="Currently Reading"
+        reRender={() => reRender()}
+      />
+      <Shelf data={data} shelfName="Want To Read" reRender={() => reRender()} />
+      <Shelf data={data} shelfName="Read" reRender={() => reRender()} />
+*/
