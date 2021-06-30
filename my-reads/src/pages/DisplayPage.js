@@ -31,6 +31,7 @@ const DisplayPage = () => {
     let unmounted = false;
     getAll().then((res) => {
       if (!unmounted && res.length > 0) {
+        console.log(res);
         setData(res);
       } else if (!unmounted) setData([]);
     });

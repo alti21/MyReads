@@ -29,7 +29,7 @@ const Shelf = ({ data, shelf, reRender }) => {
     <>
       <Header
         content={shelf.title}
-        headingClass="shelf-header"
+        className="shelf-header"
         headingLevel="h2"
       />
       <hr />
@@ -43,7 +43,7 @@ Shelf.propTypes = {
     title: PropTypes.string,
     id: PropTypes.string,
   }).isRequired,
-  data: PropTypes.arrayOf().isRequired,
+  data: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   reRender: PropTypes.func.isRequired,
 };
 
