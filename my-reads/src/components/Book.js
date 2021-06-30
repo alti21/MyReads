@@ -38,7 +38,7 @@ const Book = ({ book, reRender }) => {
   return (
     <div className="book">
       <img
-        src={book.imageLinks.thumbnail}
+        src={book.imageLinks !== undefined ? book.imageLinks.thumbnail : null}
         alt={book.title}
         className="book-thumbnail"
       />
@@ -55,10 +55,12 @@ const Book = ({ book, reRender }) => {
       />
       <div className="book-title">{book.title}</div>
       <div className="book-authors">
-        {book.authors.map((author, index) => (
-          // eslint-disable-next-line react/no-array-index-key
-          <div key={index}>{author}</div>
-        ))}
+        {book.authors !== undefined
+          ? book.authors.map((author, index) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <div key={index}>{author}</div>
+            ))
+          : null}
       </div>
     </div>
   );

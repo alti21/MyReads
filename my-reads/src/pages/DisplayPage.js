@@ -31,7 +31,6 @@ const DisplayPage = () => {
     let unmounted = false;
     getAll().then((res) => {
       if (!unmounted && res.length > 0) {
-        console.log(res);
         setData(res);
       } else if (!unmounted) setData([]);
     });
@@ -44,7 +43,12 @@ const DisplayPage = () => {
     <div>
       <Header content="MyReads" className="App-header" headingLevel="h1" />
       {SHELVES.map((shelf) => (
-        <Shelf data={data} shelf={shelf} reRender={() => reRender()} />
+        <Shelf
+          key={shelf.id}
+          data={data}
+          shelf={shelf}
+          reRender={() => reRender()}
+        />
       ))}
 
       <NavLink to="/MyReads/search">

@@ -19,6 +19,7 @@ const SearchPage = () => {
         search(query).then((res) => {
           if (res.length > 0 && !unmounted) {
             setData(res);
+            console.log(res);
           } else if (!unmounted) setData([]);
         });
       } else if (!unmounted) {
