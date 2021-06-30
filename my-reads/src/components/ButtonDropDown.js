@@ -39,23 +39,18 @@ const ButtonDropDown = ({
       >
         <div className="dropdown-label">{label}</div>
         {choices.map((choice, index) => (
-          // eslint-disable-next-line react/no-array-index-key
-          <div className="choice-wrapper" key={index}>
+          <button
+            className="dropdown-choice"
+            // eslint-disable-next-line react/no-array-index-key
+            key={index}
+            type="button"
+            onClick={() => onSelectChoice(choice)}
+          >
             <span className="check-mark">
               {currentShelf === choice ? '✔' : ''}
             </span>
-            <button
-              className="dropdown-choice"
-              onClick={() => {
-                // we create an specific callback for each item
-                onSelectChoice(choice); // callback in parent component
-              }}
-              type="button"
-              value={choice}
-            >
-              {choiceName[choice]}
-            </button>
-          </div>
+            {choiceName[choice]}
+          </button>
         ))}
       </div>
     </div>

@@ -77,21 +77,21 @@
   text-align: left;
   border: none;
   font-size: 16px;
-  padding-left: 5px;
-  margin-left: 20px;
-  width: 150px;
+  padding-left: 25px;
+  width: 170px;
 }
 
 .check-mark {
   position: absolute;
   left: 6px;
+  font-size: 15px;
 }
 
 .choice-wrapper {
   padding: 1px 0;
 }
 
-.choice-wrapper:hover, .choice-wrapper:hover > * {
+.dropdown-choice:hover, .dropdown-choice:hover > * {
   background: rgb(55, 92, 255);
   color: #fff;
 }
