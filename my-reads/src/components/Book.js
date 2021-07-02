@@ -23,9 +23,9 @@ const Book = ({ book, reRender }) => {
   useEffect(() => {
     let unmounted = false;
     update(currentBook, shelfType).then(() => {
-      get(book.id).then((res2) => {
+      get(book.id).then((res) => {
         if (!unmounted) {
-          setCurShelf(res2.shelf);
+          setCurShelf(res.shelf);
           reRender();
         }
       });
@@ -49,7 +49,6 @@ const Book = ({ book, reRender }) => {
           // this function will be passed down to child
           updateCurrentBookAndShelf(book, choice);
         }}
-        shelf={shelfType}
         currentShelf={curShelf}
         choiceName={choiceName}
         labelText="Choice Dropdown"
