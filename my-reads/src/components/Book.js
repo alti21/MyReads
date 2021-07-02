@@ -23,14 +23,11 @@ const Book = ({ book, reRender }) => {
   const isMounted = useRef(false); // use this if you don't want useEffect to run on initial render
 
   useEffect(() => {
-    // let unmounted = false;
-
     if (isMounted.current) {
+      // prevents running on initial render
       update(currentBook, shelfType).then(() => {
-        // get(book.id).then((res) => {
         setCurShelf(shelfType);
         reRender();
-        // });
       });
     } else {
       // this will fetch the current shelf of each book to update checkmarks on intial render
@@ -39,9 +36,6 @@ const Book = ({ book, reRender }) => {
       });
       isMounted.current = true;
     }
-    // return () => {
-    //   unmounted = true;
-    // };
   }, [shelfType]);
 
   return (
