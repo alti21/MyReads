@@ -59,13 +59,3 @@ const DisplayPage = () => {
 };
 
 export default DisplayPage;
-
-/*
-     <Shelf
-        data={data}
-        shelfName="Currently Reading"
-        reRender={() => reRender()}
-      />
-      <Shelf data={data} shelfName="Want To Read" reRender={() => reRender()} />
-      <Shelf data={data} shelfName="Read" reRender={() => reRender()} />
-*/

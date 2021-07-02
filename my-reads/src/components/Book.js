@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import ButtonDropDown from './ButtonDropDown';
 import { update, get } from '../api/BooksAPI';
@@ -20,19 +20,28 @@ const Book = ({ book, reRender }) => {
     setCurrentBook(currbook);
   };
 
+  const isMounted = useRef(false); // use this if you don't want useEffect to run on initial render
+
   useEffect(() => {
-    let unmounted = false;
-    update(currentBook, shelfType).then(() => {
-      get(book.id).then((res) => {
-        if (!unmounted) {
-          setCurShelf(res.shelf);
-          reRender();
-        }
+    // let unmounted = false;
+
+    if (isMounted.current) {
+      update(currentBook, shelfType).then(() => {
+        // get(book.id).then((res) => {
+        setCurShelf(shelfType);
+        reRender();
+        // });
       });
-    });
-    return () => {
-      unmounted = true;
-    };
+    } else {
+      // this will fetch the current shelf of each book to update checkmarks on intial render
+      get(book.id).then((res) => {
+        setCurShelf(res.shelf);
+      });
+      isMounted.current = true;
+    }
+    // return () => {
+    //   unmounted = true;
+    // };
   }, [shelfType]);
 
   return (
