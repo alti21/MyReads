@@ -1,6 +1,8 @@
 # MyReads
 MyReads is a book lending app in which users can choose which books to read and which ones they have read. The app is made with react.
 
+https://alti21.github.io/MyReads
+
 ## Cloning and Installation
 
 Clone and then Install [npm](https://www.npmjs.com/) using:
