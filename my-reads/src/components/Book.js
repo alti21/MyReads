@@ -49,6 +49,7 @@ const Book = ({ book, reRender }) => {
           // this function will be passed down to child
           updateCurrentBookAndShelf(book, choice);
         }}
+        label="Move to..."
         currentShelf={curShelf}
         choiceName={choiceName}
         labelText="Choice Dropdown"
