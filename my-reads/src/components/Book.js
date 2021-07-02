@@ -52,6 +52,7 @@ const Book = ({ book, reRender }) => {
         shelf={shelfType}
         currentShelf={curShelf}
         choiceName={choiceName}
+        labelText="Choice Dropdown"
       />
       <div className="book-title">{book.title}</div>
       <div className="book-authors">

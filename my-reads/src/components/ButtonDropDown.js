@@ -8,6 +8,7 @@ const ButtonDropDown = ({
   onSelectChoice,
   currentShelf,
   choiceName,
+  labelText,
 }) => {
   const [active, setActive] = useState(false);
 
@@ -30,7 +31,7 @@ const ButtonDropDown = ({
 
   return (
     <div className="dropdown" ref={node}>
-      <button type="button" className="btn">
+      <button type="button" className="btn" aria-label={labelText}>
         <BsFillCaretDownFill />
       </button>
       <div
@@ -62,6 +63,7 @@ ButtonDropDown.propTypes = {
   label: PropTypes.string,
   onSelectChoice: PropTypes.func.isRequired,
   currentShelf: PropTypes.string.isRequired,
+  labelText: PropTypes.string.isRequired,
   choiceName: PropTypes.shape({
     currentlyReading: PropTypes.string,
     wantToRead: PropTypes.string,

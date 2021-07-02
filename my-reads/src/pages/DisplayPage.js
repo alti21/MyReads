@@ -52,7 +52,7 @@ const DisplayPage = () => {
       ))}
 
       <NavLink to="/MyReads/search">
-        <AddButton />
+        <AddButton labelText="Search" />
       </NavLink>
     </div>
   );
