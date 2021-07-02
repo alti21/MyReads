@@ -15,7 +15,6 @@ const SearchPage = () => {
   useEffect(() => {
     let unmounted = false;
     const bookSearch = setTimeout(() => {
-      console.log('mounting');
       if (query.length > 0 && !unmounted) {
         search(query).then((res) => {
           if (res.length > 0 && !unmounted) {
