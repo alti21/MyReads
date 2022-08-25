@@ -3,6 +3,11 @@ MyReads is a book lending app in which users can choose which books to read and 
 
 https://alti21.github.io/MyReads
 
+Screenshot:
+![image](https://user-images.githubusercontent.com/26074290/186783608-16c66461-28f1-4fd4-8f4d-599eb7692b21.png)
+
+
+
 ## Cloning and Installation
 
 Clone and then Install [npm](https://www.npmjs.com/) using:
