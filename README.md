@@ -12,7 +12,7 @@ Screenshot:
 
 Clone and then Install [npm](https://www.npmjs.com/) using:
 
-1. #### `git clone https://github.com/alti21/StoryPick`
+1. #### `git clone https://github.com/alti21/MyReads`
 2. #### `cd my-reads`
 3. #### `npm install`
 
